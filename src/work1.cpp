@@ -20,13 +20,20 @@ namespace work1 {
 			std::cout << "读取图片失败" << std::endl;
 			return 0;
 		}
-
-		while (1) {
-			cv::imshow("PictureViewer | Press q to exit.", img);
-			if (cv::waitKey(1) == 'q')
-				break;
-		}
-
+		cv::imshow("PictureViewer | Press q to exit.", img);
+		cv::waitKey(0);
+		std::cout << "[Work1] 高：" << img.rows << std::endl;
+		std::cout << "[Work1] 宽：" << img.cols << std::endl;
+		std::cout << "[Work1] 通道数：" << img.channels() << std::endl;
+		std::cout << "[Work1] 元素个数：" << img.total() << std::endl;
+		std::cout << "[Work1] 元素大小：" << img.elemSize() << std::endl;
+		cv::cvtColor(img, gray, cv::COLOR_BGR2GRAY);
+		cout << "[Work1] 灰度后: " << endl;
+		std::cout << "[Work1] 高：" << gray.rows << std::endl;
+		std::cout << "[Work1] 宽：" << gray.cols << std::endl;
+		std::cout << "[Work1] 通道数：" << gray.channels() << std::endl;
+		std::cout << "[Work1] 元素个数：" << gray.total() << std::endl;
+		std::cout << "[Work1] 元素大小：" << gray.elemSize() << std::endl;
 		return 1;
 	}
 
@@ -150,16 +157,16 @@ namespace work1 {
 			for (int j = 0; j < gray120New.cols; j++) {
 				uint8_t &g = ptr[j];
 				if (g == 255) {
-					BlackCount++;
-				} else if (g == 0) {
 					WhiteCount++;
+				} else if (g == 0) {
+					BlackCount++;
 				} else {
 					ErrorCount++;
 				}
 			}
 		}
 		cout << "[Work1](Covered) White Count : " << WhiteCount << " | " << fixed << setprecision(3) << (
-					static_cast<float>(BlackCount) / static_cast<float>(gray120New.cols * gray120New.rows)) / 1 << "%"
+					static_cast<float>(BlackCount) / static_cast<float>(gray120New.cols * gray120New.rows)) * 100.000 << "%"
 				<<
 				std::endl;
 
