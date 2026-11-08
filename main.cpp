@@ -1,5 +1,5 @@
-#include <opencv2/opencv.hpp>
-#include <iostream>
+#include "inc/common.hpp"
+#include "inc/work1.hpp"
 
 int main()
 {
@@ -11,4 +11,12 @@ int main()
 	std::cout << "m 元素个数：" << m.total() << std::endl;
 	std::cout << "m 元素大小：" << m.elemSize() << std::endl;  // 单位为字节
 	std::cout << "尺寸：" << m.size() << std::endl;
+
+	// work1::PictureViewer("../testphoto.png");
+	// work1::FlagGenerator("../FlagImg.jpg");
+	// work1::Cutting("../FlagImg.jpg");
+	// work1::CoveredWithBlackAndWhite("../testphoto.png");
+	// work1::Progression("../testphoto.png");
+	work1::RealtimeCamera(0);
+
 }

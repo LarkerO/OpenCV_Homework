@@ -8,7 +8,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(OpenCV REQUIRED)
 
-add_executable(cpp_opencv_homework main.cpp)
+add_executable(cpp_opencv_homework main.cpp
+        inc/work1.hpp
+        src/work1.cpp
+        inc/common.hpp)
 
 target_link_libraries(cpp_opencv_homework ${OpenCV_LIBS})
 target_include_directories(cpp_opencv_homework PRIVATE ${OpenCV_INCLUDE_DIRS})
